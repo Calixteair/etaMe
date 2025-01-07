@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		82ADB2A92D2D1CA500501CB3 /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADB2A82D2D1CA500501CB3 /* AccountSettingsView.swift */; };
+		82ADB2AF2D2D1CC100501CB3 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADB2AA2D2D1CC100501CB3 /* OrderView.swift */; };
+		82ADB2B02D2D1CC100501CB3 /* DishDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADB2AB2D2D1CC100501CB3 /* DishDetailView.swift */; };
+		82ADB2B12D2D1CC100501CB3 /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADB2AC2D2D1CC100501CB3 /* model.swift */; };
+		82ADB2B22D2D1CC100501CB3 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADB2AD2D2D1CC100501CB3 /* AccountView.swift */; };
+		82ADB2B32D2D1CC100501CB3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADB2AE2D2D1CC100501CB3 /* HomeView.swift */; };
+		82ADB2B52D2D1F0300501CB3 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADB2B42D2D1F0300501CB3 /* Network.swift */; };
+		82ADB2B72D2D1FAA00501CB3 /* Property List.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82ADB2B62D2D1FAA00501CB3 /* Property List.plist */; };
 		BB69BF242D09E589001ED2D4 /* etaMeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BF232D09E589001ED2D4 /* etaMeApp.swift */; };
 		BB69BF262D09E589001ED2D4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BF252D09E589001ED2D4 /* ContentView.swift */; };
 		BB69BF282D09E58A001ED2D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB69BF272D09E58A001ED2D4 /* Assets.xcassets */; };
@@ -34,6 +42,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		82ADB2A82D2D1CA500501CB3 /* AccountSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
+		82ADB2AA2D2D1CC100501CB3 /* OrderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
+		82ADB2AB2D2D1CC100501CB3 /* DishDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishDetailView.swift; sourceTree = "<group>"; };
+		82ADB2AC2D2D1CC100501CB3 /* model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = model.swift; sourceTree = "<group>"; };
+		82ADB2AD2D2D1CC100501CB3 /* AccountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		82ADB2AE2D2D1CC100501CB3 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		82ADB2B42D2D1F0300501CB3 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		82ADB2B62D2D1FAA00501CB3 /* Property List.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Property List.plist"; sourceTree = "<group>"; };
 		BB69BF202D09E589001ED2D4 /* etaMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = etaMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB69BF232D09E589001ED2D4 /* etaMeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = etaMeApp.swift; sourceTree = "<group>"; };
 		BB69BF252D09E589001ED2D4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -94,8 +110,16 @@
 		BB69BF222D09E589001ED2D4 /* etaMe */ = {
 			isa = PBXGroup;
 			children = (
+				82ADB2AD2D2D1CC100501CB3 /* AccountView.swift */,
+				82ADB2AB2D2D1CC100501CB3 /* DishDetailView.swift */,
+				82ADB2AE2D2D1CC100501CB3 /* HomeView.swift */,
+				82ADB2AC2D2D1CC100501CB3 /* model.swift */,
+				82ADB2AA2D2D1CC100501CB3 /* OrderView.swift */,
+				82ADB2A82D2D1CA500501CB3 /* AccountSettingsView.swift */,
 				BB69BF232D09E589001ED2D4 /* etaMeApp.swift */,
 				BB69BF252D09E589001ED2D4 /* ContentView.swift */,
+				82ADB2B42D2D1F0300501CB3 /* Network.swift */,
+				82ADB2B62D2D1FAA00501CB3 /* Property List.plist */,
 				BB69BF272D09E58A001ED2D4 /* Assets.xcassets */,
 				BB69BF292D09E58A001ED2D4 /* Preview Content */,
 			);
@@ -231,6 +255,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82ADB2B72D2D1FAA00501CB3 /* Property List.plist in Resources */,
 				BB69BF2B2D09E58A001ED2D4 /* Preview Assets.xcassets in Resources */,
 				BB69BF282D09E58A001ED2D4 /* Assets.xcassets in Resources */,
 			);
@@ -258,6 +283,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB69BF262D09E589001ED2D4 /* ContentView.swift in Sources */,
+				82ADB2B12D2D1CC100501CB3 /* model.swift in Sources */,
+				82ADB2AF2D2D1CC100501CB3 /* OrderView.swift in Sources */,
+				82ADB2B02D2D1CC100501CB3 /* DishDetailView.swift in Sources */,
+				82ADB2B22D2D1CC100501CB3 /* AccountView.swift in Sources */,
+				82ADB2B52D2D1F0300501CB3 /* Network.swift in Sources */,
+				82ADB2B32D2D1CC100501CB3 /* HomeView.swift in Sources */,
+				82ADB2A92D2D1CA500501CB3 /* AccountSettingsView.swift in Sources */,
 				BB69BF242D09E589001ED2D4 /* etaMeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
