@@ -15,6 +15,9 @@
 		82ADB2B32D2D1CC100501CB3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADB2AE2D2D1CC100501CB3 /* HomeView.swift */; };
 		82ADB2B52D2D1F0300501CB3 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADB2B42D2D1F0300501CB3 /* Network.swift */; };
 		82ADB2B72D2D1FAA00501CB3 /* Property List.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82ADB2B62D2D1FAA00501CB3 /* Property List.plist */; };
+		82F1D28D2D2D57A700406DB7 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F1D28C2D2D57A700406DB7 /* AuthService.swift */; };
+		82F1D28F2D2D58E900406DB7 /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F1D28E2D2D58E900406DB7 /* OrderModel.swift */; };
+		82F1D2912D2D592A00406DB7 /* OrderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F1D2902D2D592A00406DB7 /* OrderService.swift */; };
 		BB69BF242D09E589001ED2D4 /* etaMeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BF232D09E589001ED2D4 /* etaMeApp.swift */; };
 		BB69BF262D09E589001ED2D4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BF252D09E589001ED2D4 /* ContentView.swift */; };
 		BB69BF282D09E58A001ED2D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB69BF272D09E58A001ED2D4 /* Assets.xcassets */; };
@@ -50,6 +53,9 @@
 		82ADB2AE2D2D1CC100501CB3 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		82ADB2B42D2D1F0300501CB3 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		82ADB2B62D2D1FAA00501CB3 /* Property List.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Property List.plist"; sourceTree = "<group>"; };
+		82F1D28C2D2D57A700406DB7 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		82F1D28E2D2D58E900406DB7 /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
+		82F1D2902D2D592A00406DB7 /* OrderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderService.swift; sourceTree = "<group>"; };
 		BB69BF202D09E589001ED2D4 /* etaMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = etaMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB69BF232D09E589001ED2D4 /* etaMeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = etaMeApp.swift; sourceTree = "<group>"; };
 		BB69BF252D09E589001ED2D4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -113,10 +119,13 @@
 				82ADB2AD2D2D1CC100501CB3 /* AccountView.swift */,
 				82ADB2AB2D2D1CC100501CB3 /* DishDetailView.swift */,
 				82ADB2AE2D2D1CC100501CB3 /* HomeView.swift */,
+				82F1D28C2D2D57A700406DB7 /* AuthService.swift */,
 				82ADB2AC2D2D1CC100501CB3 /* model.swift */,
 				82ADB2AA2D2D1CC100501CB3 /* OrderView.swift */,
 				82ADB2A82D2D1CA500501CB3 /* AccountSettingsView.swift */,
+				82F1D2902D2D592A00406DB7 /* OrderService.swift */,
 				BB69BF232D09E589001ED2D4 /* etaMeApp.swift */,
+				82F1D28E2D2D58E900406DB7 /* OrderModel.swift */,
 				BB69BF252D09E589001ED2D4 /* ContentView.swift */,
 				82ADB2B42D2D1F0300501CB3 /* Network.swift */,
 				82ADB2B62D2D1FAA00501CB3 /* Property List.plist */,
@@ -284,12 +293,15 @@
 			files = (
 				BB69BF262D09E589001ED2D4 /* ContentView.swift in Sources */,
 				82ADB2B12D2D1CC100501CB3 /* model.swift in Sources */,
+				82F1D2912D2D592A00406DB7 /* OrderService.swift in Sources */,
 				82ADB2AF2D2D1CC100501CB3 /* OrderView.swift in Sources */,
 				82ADB2B02D2D1CC100501CB3 /* DishDetailView.swift in Sources */,
 				82ADB2B22D2D1CC100501CB3 /* AccountView.swift in Sources */,
 				82ADB2B52D2D1F0300501CB3 /* Network.swift in Sources */,
 				82ADB2B32D2D1CC100501CB3 /* HomeView.swift in Sources */,
+				82F1D28D2D2D57A700406DB7 /* AuthService.swift in Sources */,
 				82ADB2A92D2D1CA500501CB3 /* AccountSettingsView.swift in Sources */,
+				82F1D28F2D2D58E900406DB7 /* OrderModel.swift in Sources */,
 				BB69BF242D09E589001ED2D4 /* etaMeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

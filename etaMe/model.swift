@@ -18,25 +18,21 @@ struct Dish: Identifiable, Codable {
     let URLimage: String
 }
 
-struct OrderItem: Identifiable, Codable {
-    var id = UUID()
-    let dish_id: Int
-    let quantity: Int
-    
-    private enum CodingKeys: String, CodingKey {
-            case dish_id, quantity // Exclure `id` de la sérialisation
-        }
+
+struct Order: Identifiable, Codable {
+    let id: Int?
+    let clientId: Int
+    var items: [OrderItem]
+    var total: Double {
+        items.reduce(0) { $0 + ($1.pricePerDish * Double($1.quantity)) }
+    }
 }
 
-struct Order: Codable {
-    var items: [OrderItem]
-    var dishPrices: [Int: Double] // Ajout d'un dictionnaire pour mapper dish_id aux prix
-
-    var total: Double {
-        items.reduce(0) { total, item in
-            total + (Double(item.quantity) * (dishPrices[item.dish_id] ?? 0))
-        }
-    }
+struct OrderItem: Identifiable, Codable {
+    let id: UUID = UUID()
+    let dish_id: Int
+    var quantity: Int
+    let pricePerDish: Double
 }
 
 
@@ -47,4 +43,10 @@ struct Client: Codable {
     var dateOfBirth: Date = Date()
     var extraNapkins: Bool = false
     var frequentRefill: Bool = false
+}
+import Foundation
+
+struct ErrorMessage: Identifiable {
+    let id = UUID()
+    let message: String
 }

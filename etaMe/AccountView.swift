@@ -4,7 +4,7 @@ struct AccountView: View {
     @Binding var isLoggedIn: Bool
     @Binding var clientId: Int?
     @Binding var firstName: String
-
+    
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var lastName: String = ""
@@ -13,183 +13,139 @@ struct AccountView: View {
     @State private var frequentRefill: Bool = false
     @State private var isRegistering: Bool = false
     @State private var errorMessage: String? = nil
-
+    
     var body: some View {
-        VStack(spacing: 20) {
-            if isRegistering {
-                TextField("First Name", text: $firstName)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-
-                TextField("Last Name", text: $lastName)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-
-                DatePicker("Date of Birth", selection: $dateOfBirth, displayedComponents: .date)
-                    .padding()
-
-                Toggle("Extra Napkins", isOn: $extraNapkins)
-
-                Toggle("Frequent Refill", isOn: $frequentRefill)
-            }
-
-            TextField("Email", text: $email)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .autocapitalization(.none)
-                .keyboardType(.emailAddress)
-
-            SecureField("Password", text: $password)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-
-            if let errorMessage = errorMessage {
-                Text(errorMessage)
-                    .foregroundColor(.red)
-            }
-
-            Button(isRegistering ? "Register" : "Log In") {
-                if isRegistering {
-                    registerUser()
-                } else {
-                    loginUser()
-                }
-            }
-            .buttonStyle(.borderedProminent)
-
-            Button(isRegistering ? "Already have an account? Log In" : "Don't have an account? Register") {
-                isRegistering.toggle()
-            }
-            .foregroundColor(.blue)
-
-            Spacer()
-        }
-        .padding()
-        .navigationTitle(isRegistering ? "Register" : "Login")
-    }
-
-    func registerUser() {
-        guard let url = URL(string: "http://\( ServerConfig.serverIP):\(ServerConfig.port)/api/auth/register") else {
-            errorMessage = "Invalid server URL"
-            return
-        }
-
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-
-        let dateFormatter = ISO8601DateFormatter()
-        let formattedDate = dateFormatter.string(from: dateOfBirth)
-
-        let registerData: [String: Any] = [
-            "first_name": firstName,
-            "last_name": lastName,
-            "email": email,
-            "password": password,
-            "date_of_birth": formattedDate,
-            "extra_napkins": extraNapkins,
-            "frequent_refill": frequentRefill
-        ]
-
-        do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: registerData)
-
-            URLSession.shared.dataTask(with: request) { data, response, error in
-                if let error = error {
-                    DispatchQueue.main.async {
-                        errorMessage = "Error: \(error.localizedDescription)"
-                    }
-                    return
-                }
-
-                if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 201 {
-                    DispatchQueue.main.async {
-                        errorMessage = nil
-                        isRegistering = false
-                    }
-                } else {
-                    DispatchQueue.main.async {
-                        errorMessage = "Failed to register. Please try again."
-                    }
-                }
-            }.resume()
-        } catch {
-            errorMessage = "Failed to encode registration data"
-        }
-    }
-
-    func loginUser() {
-        guard let url = URL(string: "http://\(ServerConfig.serverIP):\(ServerConfig.port)/api/auth/login") else {
-            DispatchQueue.main.async {
-                self.errorMessage = "Invalid server URL"
-            }
-            return
-        }
-
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-
-        let loginData: [String: Any] = [
-            "email": email,
-            "password": password
-        ]
-
-        do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: loginData)
+        ZStack {
+            LinearGradient(
+                gradient: Gradient(colors: [Color.blue.opacity(0.6), Color.purple.opacity(0.6)]),
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .edgesIgnoringSafeArea(.all)
             
-            URLSession.shared.dataTask(with: request) { data, response, error in
-                if let error = error {
-                    DispatchQueue.main.async {
-                        self.errorMessage = "Error: \(error.localizedDescription)"
+            VStack(spacing: 20) {
+                Text(isRegistering ? "Create Account" : "Welcome Back")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .padding(.top, 40)
+                
+                Text(isRegistering ? "Join us and enjoy exclusive features!" : "Login to continue")
+                    .font(.subheadline)
+                    .foregroundColor(.white.opacity(0.8))
+                    .padding(.bottom, 20)
+                
+                VStack(spacing: 16) {
+                    if isRegistering {
+                        CustomTextField(icon: "person", placeholder: "First Name", text: $firstName)
+                        CustomTextField(icon: "person.fill", placeholder: "Last Name", text: $lastName)
+                        DatePicker("Date of Birth", selection: $dateOfBirth, displayedComponents: .date)
+                            .foregroundColor(.white)
+                            .padding(.horizontal)
                     }
-                    return
-                }
-
-                guard let httpResponse = response as? HTTPURLResponse else {
-                    DispatchQueue.main.async {
-                        self.errorMessage = "Invalid server response"
+                    
+                    CustomTextField(icon: "envelope", placeholder: "Email", text: $email, isSecure: false)
+                    CustomTextField(icon: "lock", placeholder: "Password", text: $password, isSecure: true)
+                    
+                    if let errorMessage = errorMessage {
+                        Text(errorMessage)
+                            .foregroundColor(.red)
+                            .font(.caption)
                     }
-                    return
                 }
-
-                guard httpResponse.statusCode == 200 else {
-                    DispatchQueue.main.async {
-                        self.errorMessage = "Invalid email or password (Status code: \(httpResponse.statusCode))"
-                    }
-                    return
-                }
-
-                guard let data = data else {
-                    DispatchQueue.main.async {
-                        self.errorMessage = "No data received from server"
-                    }
-                    return
-                }
-
-                do {
-                    if let responseDict = try JSONSerialization.jsonObject(with: data) as? [String: Any],
-                       let clientId = responseDict["id"] as? Int,
-                       let firstName = responseDict["first_name"] as? String {
-                        DispatchQueue.main.async {
-                            self.clientId = clientId
-                            self.firstName = firstName
-                            self.isLoggedIn = true
-                            self.errorMessage = nil
+                .padding()
+                .background(Color.white.opacity(0.2))
+                .cornerRadius(15)
+                .shadow(radius: 5)
+                .padding(.horizontal, 20)
+                
+                Button(action: {
+                    if isRegistering {
+                        AuthService.registerUser(
+                            firstName: firstName,
+                            lastName: lastName,
+                            email: email,
+                            password: password,
+                            dateOfBirth: dateOfBirth,
+                            extraNapkins: extraNapkins,
+                            frequentRefill: frequentRefill
+                        ) { success, error in
+                            if success {
+                                isRegistering = false
+                                errorMessage = nil
+                            } else {
+                                errorMessage = error
+                            }
                         }
                     } else {
-                        DispatchQueue.main.async {
-                            self.errorMessage = "Invalid server response format"
+                        AuthService.loginUser(
+                            email: email,
+                            password: password
+                        ) { success, clientIdValue, firstNameValue, error in
+                            if success {
+                                clientId = clientIdValue
+                                firstName = firstNameValue ?? ""
+                                isLoggedIn = true
+                                errorMessage = nil
+                            } else {
+                                errorMessage = error
+                            }
                         }
                     }
-                } catch {
-                    DispatchQueue.main.async {
-                        self.errorMessage = "Failed to parse server response"
-                    }
+                }) {
+                    Text(isRegistering ? "Register" : "Login")
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.white)
+                        .foregroundColor(.blue)
+                        .font(.headline)
+                        .cornerRadius(10)
+                        .shadow(radius: 3)
                 }
-            }.resume()
-            
-        } catch {
-            DispatchQueue.main.async {
-                self.errorMessage = "Failed to encode login data: \(error.localizedDescription)"
+                .padding(.horizontal, 20)
+                
+                Button(action: {
+                    withAnimation {
+                        isRegistering.toggle()
+                    }
+                }) {
+                    Text(isRegistering ? "Already have an account? Log In" : "Don't have an account? Register")
+                        .font(.footnote)
+                        .foregroundColor(.white)
+                }
+                .padding(.top, 10)
+                
+                Spacer()
             }
         }
     }
+}
 
+struct CustomTextField: View {
+    var icon: String
+    var placeholder: String
+    @Binding var text: String
+    var isSecure: Bool = false
+    
+    var body: some View {
+        HStack {
+            Image(systemName: icon)
+                .foregroundColor(.gray)
+            if isSecure {
+                SecureField(placeholder, text: $text)
+                    .textInputAutocapitalization(.never)
+                    .autocapitalization(.none)
+                    .foregroundColor(.black)
+            } else {
+                TextField(placeholder, text: $text)
+                    .textInputAutocapitalization(.never)
+                    .autocapitalization(.none)
+                    .foregroundColor(.black)
+            }
+        }
+        .padding()
+        .background(Color.white.opacity(0.9))
+        .cornerRadius(8)
+        .shadow(radius: 2)
+    }
 }
