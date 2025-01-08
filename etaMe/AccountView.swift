@@ -5,8 +5,8 @@ struct AccountView: View {
     @Binding var clientId: Int?
     @Binding var firstName: String
     
-    @State private var email: String = ""
-    @State private var password: String = ""
+    @State private var email: String = "email1@mail.com"
+    @State private var password: String = "mdp"
     @State private var lastName: String = ""
     @State private var dateOfBirth: Date = Date()
     @State private var extraNapkins: Bool = false

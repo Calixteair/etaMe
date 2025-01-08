@@ -20,7 +20,7 @@ struct MainAppView: View {
 
     var body: some View {
         TabView {
-            HomeView(firstName: firstName)
+            HomeView(firstName: firstName , idClient: clientId)
                 .tabItem {
                     Label("Menu", systemImage: "list.dash")
                 }

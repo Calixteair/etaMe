@@ -16,24 +16,34 @@ struct Dish: Identifiable, Codable {
     let proteins: Double
     let carbs: Double
     let URLimage: String
+    
+
+}
+struct DishOrder: Identifiable, Codable {
+    let idDish: Int
+      let name: String
+      let description: String
+      let price: Double
+      let calories: Int
+      let proteins: Int
+      let carbs: Int
+      let imageURL: String
+      let quantity: Int
+      
+      var id: Int { idDish }
 }
 
 
+
+
+// MARK: - Order Model
 struct Order: Identifiable, Codable {
-    let id: Int?
-    let clientId: Int
-    var items: [OrderItem]
-    var total: Double {
-        items.reduce(0) { $0 + ($1.pricePerDish * Double($1.quantity)) }
-    }
+    let id: Int
+    let totalPrice: Double
+    let quantity: Int
 }
 
-struct OrderItem: Identifiable, Codable {
-    let id: UUID = UUID()
-    let dish_id: Int
-    var quantity: Int
-    let pricePerDish: Double
-}
+
 
 
 struct Client: Codable {

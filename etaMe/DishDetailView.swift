@@ -1,6 +1,11 @@
 import SwiftUI
+
 struct DishDetailView: View {
     var dish: Dish
+    var idClient:Int
+    @State private var quantity: Int = 1
+    @State private var isAdding: Bool = false
+    @State private var feedbackMessage: String?
     
     var body: some View {
         VStack(spacing: 20) {
@@ -17,7 +22,7 @@ struct DishDetailView: View {
             }
             
             Text(dish.name)
-                .font(.largeTitle)
+                .font(.title)
                 .fontWeight(.bold)
             
             Text(dish.description)
@@ -34,16 +39,68 @@ struct DishDetailView: View {
             }
             .font(.subheadline)
             .foregroundColor(.secondary)
-            .padding(.horizontal)
             
             Text("$\(dish.price, specifier: "%.2f")")
-                .font(.title)
+                .font(.title3)
                 .fontWeight(.bold)
                 .foregroundColor(.blue)
             
-            Spacer()
+            // Quantité
+            HStack {
+                HStack {
+                                Text("Quantity:")
+                                    .font(.headline)
+                                
+                                Text("\(quantity)")
+                                    .font(.body)
+                                    .frame(width: 50, alignment: .leading) // Largeur pour le nombre
+                            }
+                Stepper("\(quantity)", value: $quantity, in: 1...99)
+                    .frame(width: 100)
+            }
+            if let feedbackMessage = feedbackMessage {
+                Text(feedbackMessage)
+                    .foregroundColor(.green)
+            }
+                        
+            // Bouton Ajouter au panier
+            Button(action: addToOrder) {
+                if isAdding {
+                    ProgressView()
+                } else {
+                    Text("Add to Order")
+                        .font(.headline)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
+            }
+            .disabled(isAdding)
+            
+            // Message de feedback
+          
         }
         .padding()
         .navigationTitle(dish.name)
+    }
+    
+    // MARK: - Ajouter au panier
+    func addToOrder() {
+        isAdding = true
+        feedbackMessage = nil
+        
+        OrderService.shared.addItemToOrder(clientId: idClient, dishId: dish.id, quantity: quantity) { result in
+            DispatchQueue.main.async {
+                isAdding = false
+                switch result {
+                case .success:
+                    feedbackMessage = "Dish successfully added to your order!"
+                case .failure(let error):
+                    feedbackMessage = "Failed to add dish: \(error.localizedDescription)"
+                }
+            }
+        }
     }
 }

@@ -1,96 +1,145 @@
 import Foundation
 
+// MARK: - API Error
+enum APIError: Error, LocalizedError {
+    case invalidURL
+    case noData
+    case failedRequest(String)
+    case decodingError(String)
+    
+    var errorDescription: String? {
+        switch self {
+        case .invalidURL:
+            return "Invalid URL"
+        case .noData:
+            return "No data received from the server"
+        case .failedRequest(let message):
+            return "Failed request: \(message)"
+        case .decodingError(let message):
+            return "Decoding error: \(message)"
+        }
+    }
+}
+
+// MARK: - OrderService
 class OrderService {
     static let shared = OrderService()
-    private let baseURL = "http://\(ServerConfig.serverIP):\(ServerConfig.port)/api/orders"
+    private init() {}
     
-    // Récupérer la commande en cours pour un client
-    func fetchOrder(for clientId: Int, completion: @escaping (Result<Order, Error>) -> Void) {
-        guard let url = URL(string: "\(baseURL)/\(clientId)") else { return }
+    func fetchOrders(for clientId: Int, completion: @escaping (Result<[Order], APIError>) -> Void) {
+        let clientIdString = String(clientId)
         
-        URLSession.shared.dataTask(with: url) { data, _, error in
+        guard let url = URL(string: "http://\(ServerConfig.serverIP):\(ServerConfig.port)/api/orders/client/\(clientIdString)") else {
+            completion(.failure(.invalidURL))
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
-                completion(.failure(error))
+                completion(.failure(.failedRequest(error.localizedDescription)))
                 return
             }
-            guard let data = data else { return }
+            
+            guard let data = data else {
+                completion(.failure(.noData))
+                return
+            }
+            
+            // 🐞 DEBUG : Affiche les données brutes reçues
+            if let jsonString = String(data: data, encoding: .utf8) {
+                print("🔍 API Response: \(jsonString)")
+            }
+            
             do {
-                let order = try JSONDecoder().decode(Order.self, from: data)
-                completion(.success(order))
+                let orders = try JSONDecoder().decode([Order].self, from: data)
+                completion(.success(orders))
             } catch {
-                completion(.failure(error))
+                completion(.failure(.decodingError(error.localizedDescription)))
             }
-        }.resume()
+        }
+        
+        task.resume()
     }
     
-    // Ajouter un article
-    func addItem(clientId: Int, dishId: Int, quantity: Int, pricePerDish: Double, completion: @escaping (Result<Void, Error>) -> Void) {
-        guard let url = URL(string: "\(baseURL)/addItem") else { return }
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    
+    
+    // MARK: - Fetch Order Details
+    func fetchOrderDetails(for orderId: Int, completion: @escaping (Result<[DishOrder], APIError>) -> Void) {
+        let orderIdString = String(orderId)
         
-        let body: [String: Any] = [
-            "idClient": clientId,
-            "idDish": dishId,
-            "quantity": quantity,
-            "pricePerDish": pricePerDish
-        ]
+        guard let url = URL(string: "http://\(ServerConfig.serverIP):\(ServerConfig.port)/api/orders/\(orderIdString)") else {
+            completion(.failure(.invalidURL))
+            return
+        }
         
-        request.httpBody = try? JSONSerialization.data(withJSONObject: body)
-        
-        URLSession.shared.dataTask(with: request) { _, _, error in
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
-                completion(.failure(error))
-            } else {
-                completion(.success(()))
+                completion(.failure(.failedRequest(error.localizedDescription)))
+                return
             }
-        }.resume()
+            
+            guard let data = data else {
+                completion(.failure(.noData))
+                return
+            }
+            
+            // 🐞 DEBUG : Affiche les données brutes reçues
+            if let jsonString = String(data: data, encoding: .utf8) {
+                print("🔍 API Response: \(jsonString)")
+            }
+            
+            do {
+                let dishes = try JSONDecoder().decode([DishOrder].self, from: data)
+                completion(.success(dishes))
+            } catch {
+                completion(.failure(.decodingError(error.localizedDescription)))
+            }
+        }
+        
+        task.resume()
     }
     
-    // Ajuster ou supprimer un article
-    func adjustItem(clientId: Int, dishId: Int, quantity: Int, completion: @escaping (Result<Void, Error>) -> Void) {
-        guard let url = URL(string: "\(baseURL)/adjustItem") else { return }
+    // MARK: - Add Item to Order
+    func addItemToOrder(clientId: Int, dishId: Int, quantity: Int, completion: @escaping (Result<Void, APIError>) -> Void) {
+        guard let url = URL(string: "http://\(ServerConfig.serverIP):\(ServerConfig.port)/api/orders/addItem") else {
+            completion(.failure(.invalidURL))
+            return
+        }
+        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let body: [String: Any] = [
+        let payload: [String: Any] = [
             "idClient": clientId,
             "idDish": dishId,
             "quantity": quantity
         ]
         
-        request.httpBody = try? JSONSerialization.data(withJSONObject: body)
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: payload)
+        } catch {
+            completion(.failure(.decodingError("Failed to encode JSON payload")))
+            return
+        }
         
-        URLSession.shared.dataTask(with: request) { _, _, error in
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
-                completion(.failure(error))
-            } else {
-                completion(.success(()))
+                completion(.failure(.failedRequest(error.localizedDescription)))
+                return
             }
-        }.resume()
-    }
-    
-    // Finaliser une commande
-    func finalizeOrder(orderId: Int, completion: @escaping (Result<Void, Error>) -> Void) {
-        guard let url = URL(string: "\(baseURL)/finalize") else { return }
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        let body: [String: Any] = [
-            "idOrder": orderId
-        ]
-        
-        request.httpBody = try? JSONSerialization.data(withJSONObject: body)
-        
-        URLSession.shared.dataTask(with: request) { _, _, error in
-            if let error = error {
-                completion(.failure(error))
-            } else {
-                completion(.success(()))
+            
+            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                completion(.failure(.failedRequest("Server returned an error.")))
+                return
             }
-        }.resume()
+            
+            completion(.success(()))
+        }
+        
+        task.resume()
     }
+
+
+
 }

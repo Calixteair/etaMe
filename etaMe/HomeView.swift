@@ -2,6 +2,7 @@ import SwiftUI
 
 struct HomeView: View {
     let firstName: String
+    var idClient:Int
     @State private var dishes: [Dish] = []
 
     var body: some View {
@@ -32,7 +33,7 @@ struct HomeView: View {
                    
                    // Liste des plats
                    List(dishes) { dish in
-                       NavigationLink(destination: DishDetailView(dish: dish)) {
+                       NavigationLink(destination: DishDetailView(dish: dish , idClient: idClient)) {
                            HStack(alignment: .center, spacing: 16) {
                                // Image du plat
                                AsyncImage(url: URL(string: dish.URLimage)) { image in
