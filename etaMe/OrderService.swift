@@ -139,6 +139,78 @@ class OrderService {
         
         task.resume()
     }
+    
+    
+    // MARK: - Remove Dish from Order
+    func removeDishFromOrder(clientId: Int, dishId: Int, completion: @escaping (Result<Void, APIError>) -> Void) {
+        guard let url = URL(string: "http://\(ServerConfig.serverIP):\(ServerConfig.port)/api/orders/remove") else {
+            completion(.failure(.invalidURL))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let payload: [String: Any] = [
+            "idClient": clientId,
+            "idDish": dishId
+        ]
+        
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: payload)
+        } catch {
+            completion(.failure(.decodingError("Failed to encode JSON payload")))
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(.failedRequest(error.localizedDescription)))
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                completion(.failure(.failedRequest("Server returned an error.")))
+                return
+            }
+            
+            completion(.success(()))
+        }
+        
+        task.resume()
+    }
+    
+    
+    // MARK: - Finalize Order
+    func finalizeOrder(orderId: Int, completion: @escaping (Result<Void, APIError>) -> Void) {
+        guard let url = URL(string: "http://\(ServerConfig.serverIP):\(ServerConfig.port)/api/orders/finalize/\(orderId)") else {
+            completion(.failure(.invalidURL))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(.failedRequest(error.localizedDescription)))
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                completion(.failure(.failedRequest("Server returned an error.")))
+                return
+            }
+            
+            completion(.success(()))
+        }
+        
+        task.resume()
+    }
+
+
 
 
 

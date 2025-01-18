@@ -7,36 +7,39 @@ struct ContentView: View {
 
     var body: some View {
         if isLoggedIn {
-            MainAppView(clientId: clientId ?? 0, firstName: firstName)
+            MainAppView(isLoggedIn: $isLoggedIn, clientId: $clientId, firstName: $firstName)
         } else {
-            AccountView(isLoggedIn: $isLoggedIn, clientId: $clientId, firstName: $firstName)
+            LoginView(isLoggedIn: $isLoggedIn, clientId: $clientId, firstName: $firstName)
         }
     }
 }
+	
 
 struct MainAppView: View {
-    let clientId: Int
-    let firstName: String
+    @Binding var isLoggedIn: Bool
+    @Binding var clientId: Int?
+    @Binding var firstName: String
 
     var body: some View {
         TabView {
-            HomeView(firstName: firstName , idClient: clientId)
+            HomeView(firstName: firstName, idClient: clientId ?? 0)
                 .tabItem {
                     Label("Menu", systemImage: "list.dash")
                 }
 
-            OrderView(clientId: clientId)
+            OrderView(clientId: clientId ?? 0)
                 .tabItem {
                     Label("Order", systemImage: "cart")
                 }
 
-            Text("Account Settings")
+            AccountView(isLoggedIn: $isLoggedIn, clientId: $clientId, firstName: $firstName)
                 .tabItem {
                     Label("Account", systemImage: "person.crop.circle")
-                }
+                }	
         }
     }
 }
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()

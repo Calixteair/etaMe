@@ -28,7 +28,7 @@ struct DishOrder: Identifiable, Codable {
       let proteins: Int
       let carbs: Int
       let imageURL: String
-      let quantity: Int
+      var quantity: Int
       
       var id: Int { idDish }
 }
@@ -41,6 +41,7 @@ struct Order: Identifiable, Codable {
     let id: Int
     let totalPrice: Double
     let quantity: Int
+    let status: String
 }
 
 

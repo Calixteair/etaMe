@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28D4EF492D3C6F9D00660F3B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D4EF482D3C6F9D00660F3B /* LoginView.swift */; };
 		82578ABD2D2ED56C00242235 /* OrderDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82578ABC2D2ED56C00242235 /* OrderDetailView.swift */; };
 		82ADB2A92D2D1CA500501CB3 /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADB2A82D2D1CA500501CB3 /* AccountSettingsView.swift */; };
 		82ADB2AF2D2D1CC100501CB3 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADB2AA2D2D1CC100501CB3 /* OrderView.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		28D4EF482D3C6F9D00660F3B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		82578ABC2D2ED56C00242235 /* OrderDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailView.swift; sourceTree = "<group>"; };
 		82ADB2A82D2D1CA500501CB3 /* AccountSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
 		82ADB2AA2D2D1CC100501CB3 /* OrderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				82ADB2AD2D2D1CC100501CB3 /* AccountView.swift */,
+				28D4EF482D3C6F9D00660F3B /* LoginView.swift */,
 				82ADB2AB2D2D1CC100501CB3 /* DishDetailView.swift */,
 				82ADB2AE2D2D1CC100501CB3 /* HomeView.swift */,
 				82F1D28C2D2D57A700406DB7 /* AuthService.swift */,
@@ -302,6 +305,7 @@
 				82ADB2B22D2D1CC100501CB3 /* AccountView.swift in Sources */,
 				82ADB2B52D2D1F0300501CB3 /* Network.swift in Sources */,
 				82578ABD2D2ED56C00242235 /* OrderDetailView.swift in Sources */,
+				28D4EF492D3C6F9D00660F3B /* LoginView.swift in Sources */,
 				82ADB2B32D2D1CC100501CB3 /* HomeView.swift in Sources */,
 				82F1D28D2D2D57A700406DB7 /* AuthService.swift in Sources */,
 				82ADB2A92D2D1CA500501CB3 /* AccountSettingsView.swift in Sources */,
@@ -470,6 +474,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"etaMe/Preview Content\"";
+				DEVELOPMENT_TEAM = 9GNX6CSHBG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -498,6 +503,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"etaMe/Preview Content\"";
+				DEVELOPMENT_TEAM = 9GNX6CSHBG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
