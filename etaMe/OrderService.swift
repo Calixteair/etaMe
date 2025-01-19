@@ -23,13 +23,15 @@ enum APIError: Error, LocalizedError {
 
 // MARK: - OrderService
 class OrderService {
+    var baseURL = ServerConfig().getBaseUrl()
+
     static let shared = OrderService()
     private init() {}
     
     func fetchOrders(for clientId: Int, completion: @escaping (Result<[Order], APIError>) -> Void) {
         let clientIdString = String(clientId)
         
-        guard let url = URL(string: "http://\(ServerConfig.serverIP):\(ServerConfig.port)/api/orders/client/\(clientIdString)") else {
+        guard let url = URL(string: "\(baseURL)/api/orders/client/\(clientIdString)") else {
             completion(.failure(.invalidURL))
             return
         }
@@ -45,11 +47,7 @@ class OrderService {
                 return
             }
             
-            // 🐞 DEBUG : Affiche les données brutes reçues
-            if let jsonString = String(data: data, encoding: .utf8) {
-                print("🔍 API Response: \(jsonString)")
-            }
-            
+          
             do {
                 let orders = try JSONDecoder().decode([Order].self, from: data)
                 completion(.success(orders))
@@ -67,7 +65,7 @@ class OrderService {
     func fetchOrderDetails(for orderId: Int, completion: @escaping (Result<[DishOrder], APIError>) -> Void) {
         let orderIdString = String(orderId)
         
-        guard let url = URL(string: "http://\(ServerConfig.serverIP):\(ServerConfig.port)/api/orders/\(orderIdString)") else {
+        guard let url = URL(string: "\(baseURL)/api/orders/\(orderIdString)") else {
             completion(.failure(.invalidURL))
             return
         }
@@ -83,11 +81,7 @@ class OrderService {
                 return
             }
             
-            // 🐞 DEBUG : Affiche les données brutes reçues
-            if let jsonString = String(data: data, encoding: .utf8) {
-                print("🔍 API Response: \(jsonString)")
-            }
-            
+        
             do {
                 let dishes = try JSONDecoder().decode([DishOrder].self, from: data)
                 completion(.success(dishes))
@@ -101,7 +95,7 @@ class OrderService {
     
     // MARK: - Add Item to Order
     func addItemToOrder(clientId: Int, dishId: Int, quantity: Int, completion: @escaping (Result<Void, APIError>) -> Void) {
-        guard let url = URL(string: "http://\(ServerConfig.serverIP):\(ServerConfig.port)/api/orders/addItem") else {
+        guard let url = URL(string: "\(baseURL)/api/orders/addItem") else {
             completion(.failure(.invalidURL))
             return
         }
@@ -143,7 +137,7 @@ class OrderService {
     
     // MARK: - Remove Dish from Order
     func removeDishFromOrder(clientId: Int, dishId: Int, completion: @escaping (Result<Void, APIError>) -> Void) {
-        guard let url = URL(string: "http://\(ServerConfig.serverIP):\(ServerConfig.port)/api/orders/remove") else {
+        guard let url = URL(string: "\(baseURL)/api/orders/remove") else {
             completion(.failure(.invalidURL))
             return
         }
@@ -184,7 +178,7 @@ class OrderService {
     
     // MARK: - Finalize Order
     func finalizeOrder(orderId: Int, completion: @escaping (Result<Void, APIError>) -> Void) {
-        guard let url = URL(string: "http://\(ServerConfig.serverIP):\(ServerConfig.port)/api/orders/finalize/\(orderId)") else {
+        guard let url = URL(string: "\(baseURL)/api/orders/finalize/\(orderId)") else {
             completion(.failure(.invalidURL))
             return
         }

@@ -3,6 +3,8 @@ import SwiftUI
 
 struct AuthService {
     
+    static var baseURL = ServerConfig().getBaseUrl()
+    
     // MARK: - Register User
     static func registerUser(
         firstName: String,
@@ -14,7 +16,7 @@ struct AuthService {
         frequentRefill: Bool,
         onCompletion: @escaping (_ success: Bool, _ errorMessage: String?) -> Void
     ) {
-        guard let url = URL(string: "http://\(ServerConfig.serverIP):\(ServerConfig.port)/api/auth/register") else {
+        guard let url = URL(string: "\(baseURL)/api/auth/register") else {
             onCompletion(false, "Invalid server URL")
             return
         }
@@ -65,7 +67,7 @@ struct AuthService {
         password: String,
         onCompletion: @escaping (_ success: Bool, _ clientId: Int?, _ firstName: String?, _ errorMessage: String?) -> Void
     ) {
-        guard let url = URL(string: "http://\(ServerConfig.serverIP):\(ServerConfig.port)/api/auth/login") else {
+        guard let url = URL(string: "\(baseURL)/api/auth/login") else {
             onCompletion(false, nil, nil, "Invalid server URL")
             return
         }
@@ -139,7 +141,9 @@ struct AuthService {
         clientId: Int,
         completion: @escaping (Result<[String: Any], Error>) -> Void
     ) {
-        guard let url = URL(string: "http://\(ServerConfig.serverIP):\(ServerConfig.port)/api/user/\(clientId)") else {
+        
+        	
+        guard let url = URL(string: "\(baseURL)/api/user/\(clientId)") else {
             completion(.failure(NSError(domain: "Invalid URL", code: -1, userInfo: nil)))
             return
         }
@@ -171,3 +175,4 @@ struct AuthService {
         }.resume()
     }
 }
+	
