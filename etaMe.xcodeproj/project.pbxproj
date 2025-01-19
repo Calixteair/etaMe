@@ -60,7 +60,7 @@
 		82F1D28C2D2D57A700406DB7 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		82F1D28E2D2D58E900406DB7 /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
 		82F1D2902D2D592A00406DB7 /* OrderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderService.swift; sourceTree = "<group>"; };
-		BB69BF202D09E589001ED2D4 /* etaMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = etaMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB69BF202D09E589001ED2D4 /* EatMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EatMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB69BF232D09E589001ED2D4 /* etaMeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = etaMeApp.swift; sourceTree = "<group>"; };
 		BB69BF252D09E589001ED2D4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BB69BF272D09E58A001ED2D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 		BB69BF212D09E589001ED2D4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BB69BF202D09E589001ED2D4 /* etaMe.app */,
+				BB69BF202D09E589001ED2D4 /* EatMe.app */,
 				BB69BF302D09E58A001ED2D4 /* etaMeTests.xctest */,
 				BB69BF3A2D09E58A001ED2D4 /* etaMeUITests.xctest */,
 			);
@@ -169,9 +169,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BB69BF1F2D09E589001ED2D4 /* etaMe */ = {
+		BB69BF1F2D09E589001ED2D4 /* EatMe */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BB69BF442D09E58A001ED2D4 /* Build configuration list for PBXNativeTarget "etaMe" */;
+			buildConfigurationList = BB69BF442D09E58A001ED2D4 /* Build configuration list for PBXNativeTarget "EatMe" */;
 			buildPhases = (
 				BB69BF1C2D09E589001ED2D4 /* Sources */,
 				BB69BF1D2D09E589001ED2D4 /* Frameworks */,
@@ -181,9 +181,9 @@
 			);
 			dependencies = (
 			);
-			name = etaMe;
+			name = EatMe;
 			productName = etaMe;
-			productReference = BB69BF202D09E589001ED2D4 /* etaMe.app */;
+			productReference = BB69BF202D09E589001ED2D4 /* EatMe.app */;
 			productType = "com.apple.product-type.application";
 		};
 		BB69BF2F2D09E58A001ED2D4 /* etaMeTests */ = {
@@ -258,7 +258,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BB69BF1F2D09E589001ED2D4 /* etaMe */,
+				BB69BF1F2D09E589001ED2D4 /* EatMe */,
 				BB69BF2F2D09E58A001ED2D4 /* etaMeTests */,
 				BB69BF392D09E58A001ED2D4 /* etaMeUITests */,
 			);
@@ -336,12 +336,12 @@
 /* Begin PBXTargetDependency section */
 		BB69BF322D09E58A001ED2D4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BB69BF1F2D09E589001ED2D4 /* etaMe */;
+			target = BB69BF1F2D09E589001ED2D4 /* EatMe */;
 			targetProxy = BB69BF312D09E58A001ED2D4 /* PBXContainerItemProxy */;
 		};
 		BB69BF3C2D09E58A001ED2D4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BB69BF1F2D09E589001ED2D4 /* etaMe */;
+			target = BB69BF1F2D09E589001ED2D4 /* EatMe */;
 			targetProxy = BB69BF3B2D09E58A001ED2D4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -608,7 +608,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BB69BF442D09E58A001ED2D4 /* Build configuration list for PBXNativeTarget "etaMe" */ = {
+		BB69BF442D09E58A001ED2D4 /* Build configuration list for PBXNativeTarget "EatMe" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BB69BF452D09E58A001ED2D4 /* Debug */,
