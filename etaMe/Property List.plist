@@ -5,9 +5,9 @@
 	<key>ServerIP</key>
 	<string>192.168.1.11</string>
 	<key>mode</key>
-	<integer>1</integer>
+	<integer>0</integer>
 	<key>link</key>
-	<string></string>
+	<string>https://eatme.codeky.fr</string>
 	<key>Port</key>
 	<string>3000</string>
 </dict>

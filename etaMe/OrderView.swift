@@ -27,9 +27,7 @@ struct OrderView: View {
                     VStack {
                         Image(systemName: "cart.badge.minus")
                             .font(.largeTitle)
-                            .foregroundColor(.gray)
                         Text("No orders found.")
-                            .foregroundColor(.gray)
                             .padding()
                     }
                 } else {
@@ -78,7 +76,7 @@ struct OrderRow: View {
         NavigationLink(destination: OrderDetailView(orderId: order.id, clientId: clientId,orderValided: order.status == "validée")) {
             HStack {
                 VStack(alignment: .leading, spacing: 6) {
-                    Text("Order ID: \(order.id)")
+                    Text("Order: \(order.dateOrder)")
                         .font(.headline)
                     Text("Quantity: \(order.quantity)")
                         .font(.subheadline)

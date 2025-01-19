@@ -8,12 +8,11 @@ struct HomeView: View {
     var body: some View {
            NavigationView {
                VStack(spacing: 0) {
-                   // En-tête personnalisé
                    VStack {
-                       Text("Welcome, \(firstName)!")
+                       Text("Hey, \(firstName)!")
                            .font(.system(size: 28, weight: .bold))
                            .foregroundColor(.white)
-                           .padding(.top, 60)
+                           .padding(.top, 20)
                        
                        Text("Discover delicious meals curated for you")
                            .font(.system(size: 16))
@@ -31,7 +30,6 @@ struct HomeView: View {
                    .cornerRadius(20)
                    .padding(.horizontal)
                    
-                   // Liste des plats
                    List(dishes) { dish in
                        NavigationLink(destination: DishDetailView(dish: dish , idClient: idClient)) {
                            HStack(alignment: .center, spacing: 16) {
@@ -77,7 +75,7 @@ struct HomeView: View {
                        .listRowSeparator(.hidden)
                    }
                    .listStyle(.plain)
-                   .navigationTitle("🍽️ Our Menu")
+                   .navigationTitle("Our Menu")
                    .onAppear {
                        fetchDishes()
                    }
@@ -87,7 +85,8 @@ struct HomeView: View {
        }
 
     func fetchDishes() {
-        guard let url = URL(string: "http://\( ServerConfig.serverIP):\(ServerConfig.port)/api/dishes") else { return }
+        let baseURL = ServerConfig().getBaseUrl()
+        guard let url = URL(string: "\(baseURL)/api/dishes") else { return }
 
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let data = data {

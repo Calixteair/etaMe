@@ -187,6 +187,12 @@ struct DishRow: View {
             VStack {
                 Text("\(dish.price * Double(dish.quantity), specifier: "%.2f") $")
                     .font(.headline)
+                if orderValided {
+                    Text("x\(dish.quantity)")
+                        .font(.subheadline)
+                        .padding(.horizontal, 5)
+                }
+                
                 if !orderValided { // Afficher uniquement si la commande n'est pas validée
                     HStack {
                         Button(action: {

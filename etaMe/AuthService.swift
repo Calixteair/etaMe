@@ -12,8 +12,6 @@ struct AuthService {
         email: String,
         password: String,
         dateOfBirth: Date,
-        extraNapkins: Bool,
-        frequentRefill: Bool,
         onCompletion: @escaping (_ success: Bool, _ errorMessage: String?) -> Void
     ) {
         guard let url = URL(string: "\(baseURL)/api/auth/register") else {
@@ -34,8 +32,6 @@ struct AuthService {
             "email": email,
             "password": password,
             "date_of_birth": formattedDate,
-            "extra_napkins": extraNapkins,
-            "frequent_refill": frequentRefill
         ]
         
         do {

@@ -9,15 +9,15 @@ struct LoginView: View {
     @State private var password: String = "mdp"
     @State private var lastName: String = ""
     @State private var dateOfBirth: Date = Date()
-    @State private var extraNapkins: Bool = false
-    @State private var frequentRefill: Bool = false
     @State private var isRegistering: Bool = false
     @State private var errorMessage: String? = nil
+    
+    @Environment(\.colorScheme) var colorScheme // Détecte le mode clair ou sombre
     
     var body: some View {
         ZStack {
             LinearGradient(
-                gradient: Gradient(colors: [Color.blue.opacity(0.6), Color.purple.opacity(0.6)]),
+                gradient: Gradient(colors: colorScheme == .dark ? [Color.black, Color.gray] : [Color.blue.opacity(0.6), Color.purple.opacity(0.6)]),
                 startPoint: .top,
                 endPoint: .bottom
             )
@@ -39,9 +39,17 @@ struct LoginView: View {
                     if isRegistering {
                         CustomTextField(icon: "person", placeholder: "First Name", text: $firstName)
                         CustomTextField(icon: "person.fill", placeholder: "Last Name", text: $lastName)
-                        DatePicker("Date of Birth", selection: $dateOfBirth, displayedComponents: .date)
-                            .foregroundColor(.white)
-                            .padding(.horizontal)
+                        HStack{
+                            Text("Date of Birth").foregroundStyle(Color.white)
+                            Spacer()
+                            DatePicker("Date of Birth", selection: $dateOfBirth, displayedComponents: .date)
+                                .labelsHidden() // Cache le label pour un style minimal
+                                .datePickerStyle(.compact)
+                                .colorInvert() // Force l'inversion des couleurs pour un texte blanc
+                                .foregroundColor(.white) // Assure que la police est blanche
+                                .padding()
+                                .cornerRadius(8)
+                        }
                     }
                     
                     CustomTextField(icon: "envelope", placeholder: "Email", text: $email, isSecure: false)
@@ -54,7 +62,7 @@ struct LoginView: View {
                     }
                 }
                 .padding()
-                .background(Color.white.opacity(0.2))
+                .background(colorScheme == .dark ? Color.gray.opacity(0.2) : Color.white.opacity(0.2))
                 .cornerRadius(15)
                 .shadow(radius: 5)
                 .padding(.horizontal, 20)
@@ -66,9 +74,7 @@ struct LoginView: View {
                             lastName: lastName,
                             email: email,
                             password: password,
-                            dateOfBirth: dateOfBirth,
-                            extraNapkins: extraNapkins,
-                            frequentRefill: frequentRefill
+                            dateOfBirth: dateOfBirth
                         ) { success, error in
                             if success {
                                 isRegistering = false
@@ -96,8 +102,8 @@ struct LoginView: View {
                     Text(isRegistering ? "Register" : "Login")
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background(Color.white)
-                        .foregroundColor(.blue)
+                        .background(colorScheme == .dark ? Color.white.opacity(0.8) : Color.white)
+                        .foregroundColor(colorScheme == .dark ? .black : .blue)
                         .font(.headline)
                         .cornerRadius(10)
                         .shadow(radius: 3)
@@ -121,11 +127,14 @@ struct LoginView: View {
     }
 }
 
+
 struct CustomTextField: View {
     var icon: String
     var placeholder: String
     @Binding var text: String
     var isSecure: Bool = false
+    
+    @Environment(\.colorScheme) var colorScheme // Permet de détecter le mode (clair ou sombre)
     
     var body: some View {
         HStack {
@@ -135,16 +144,16 @@ struct CustomTextField: View {
                 SecureField(placeholder, text: $text)
                     .textInputAutocapitalization(.never)
                     .autocapitalization(.none)
-                    .foregroundColor(.black)
+                    .foregroundColor(colorScheme == .dark ? .white : .black) // Texte adapté au mode
             } else {
                 TextField(placeholder, text: $text)
                     .textInputAutocapitalization(.never)
                     .autocapitalization(.none)
-                    .foregroundColor(.black)
+                    .foregroundColor(colorScheme == .dark ? .white : .black) // Texte adapté au mode
             }
         }
         .padding()
-        .background(Color.white.opacity(0.9))
+        .background(colorScheme == .dark ? Color.black.opacity(0.9) : Color.white.opacity(0.9)) // Fond adapté au mode
         .cornerRadius(8)
         .shadow(radius: 2)
     }

@@ -28,6 +28,10 @@ class OrderService {
     static let shared = OrderService()
     private init() {}
     
+    
+    
+    
+    
     func fetchOrders(for clientId: Int, completion: @escaping (Result<[Order], APIError>) -> Void) {
         let clientIdString = String(clientId)
         
