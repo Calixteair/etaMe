@@ -31,7 +31,7 @@ struct MainAppView: View {
                     Label("Order", systemImage: "cart")
                 }
 
-            AccountView(appViewModel: appViewModel)
+            ProfileView(appViewModel: appViewModel)
                 .tabItem {
                     Label("Account", systemImage: "person.crop.circle")
                 }

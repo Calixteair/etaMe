@@ -8,9 +8,12 @@
 import Foundation
 
 
-struct Client: Codable {
-    var firstName: String = ""
-    var lastName: String = ""
-    var email: String = ""
-    var dateOfBirth: Date = Date()
+struct UserProfile: Codable {
+    let idClient: Int
+    let firstName: String
+    let lastName: String
+    let email: String
+    let password: String
+    let dateOfBirth: String
 }
+

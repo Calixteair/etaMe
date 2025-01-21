@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28D377E02D402B6A002ADDB4 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D377DF2D402B6A002ADDB4 /* UserService.swift */; };
+		28D377E22D403BCA002ADDB4 /* EditProfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D377E12D403BCA002ADDB4 /* EditProfilView.swift */; };
 		28D4EF492D3C6F9D00660F3B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D4EF482D3C6F9D00660F3B /* LoginView.swift */; };
 		820075082D3FC6810049AE26 /* DishModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820075072D3FC6810049AE26 /* DishModel.swift */; };
 		8200750A2D3FC6CB0049AE26 /* ClientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820075092D3FC6CB0049AE26 /* ClientModel.swift */; };
@@ -59,6 +61,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		28D377DF2D402B6A002ADDB4 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		28D377E12D403BCA002ADDB4 /* EditProfilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfilView.swift; sourceTree = "<group>"; };
 		28D4EF482D3C6F9D00660F3B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		820075072D3FC6810049AE26 /* DishModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishModel.swift; sourceTree = "<group>"; };
 		820075092D3FC6CB0049AE26 /* ClientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientModel.swift; sourceTree = "<group>"; };
@@ -125,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				82ADB2AD2D2D1CC100501CB3 /* AccountView.swift */,
+				28D377E12D403BCA002ADDB4 /* EditProfilView.swift */,
 				28D4EF482D3C6F9D00660F3B /* LoginView.swift */,
 				820075232D3FDB920049AE26 /* DishRowView.swift */,
 				82ADB2AB2D2D1CC100501CB3 /* DishDetailView.swift */,
@@ -141,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				82F1D28C2D2D57A700406DB7 /* AuthService.swift */,
+				28D377DF2D402B6A002ADDB4 /* UserService.swift */,
 				82F1D2902D2D592A00406DB7 /* OrderService.swift */,
 				82ADB2B42D2D1F0300501CB3 /* Network.swift */,
 			);
@@ -365,8 +371,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28D377E22D403BCA002ADDB4 /* EditProfilView.swift in Sources */,
 				BB69BF262D09E589001ED2D4 /* ContentView.swift in Sources */,
 				82F1D2912D2D592A00406DB7 /* OrderService.swift in Sources */,
+				28D377E02D402B6A002ADDB4 /* UserService.swift in Sources */,
 				820075202D3FCCC50049AE26 /* AppViewModel.swift in Sources */,
 				82ADB2AF2D2D1CC100501CB3 /* OrderView.swift in Sources */,
 				820075182D3FC83C0049AE26 /* HomeViewModel.swift in Sources */,
