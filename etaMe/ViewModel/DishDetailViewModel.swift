@@ -1,8 +1,32 @@
-//
-//  DishDetailViewModel.swift
-//  EatMe
-//
-//  Created by akburak zekeriya on 21/01/2025.
-//
-
 import Foundation
+
+class DishDetailViewModel: ObservableObject {
+    @Published var quantity: Int = 1
+    @Published var isAdding: Bool = false
+    @Published var feedbackMessage: String?
+
+     let clientId: Int
+     let dish: Dish
+
+    init(clientId: Int, dish: Dish) {
+        self.clientId = clientId
+        self.dish = dish
+    }
+
+    func addToOrder() {
+        isAdding = true
+        feedbackMessage = nil
+
+        OrderService.shared.addItemToOrder(clientId: clientId, dishId: dish.id, quantity: quantity) { result in
+            DispatchQueue.main.async {
+                self.isAdding = false
+                switch result {
+                case .success:
+                    self.feedbackMessage = "Dish successfully added to your order!"
+                case .failure(let error):
+                    self.feedbackMessage = "Failed to add dish: \(error.localizedDescription)"
+                }
+            }
+        }
+    }
+}

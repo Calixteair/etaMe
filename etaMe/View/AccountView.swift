@@ -1,27 +1,24 @@
 import SwiftUI
+
 struct AccountView: View {
-    @Binding var isLoggedIn: Bool
-    @Binding var clientId: Int?
-    @Binding var firstName: String
+    @ObservedObject var appViewModel: AppViewModel
 
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
-                Text("Welcome, \(firstName)")
+                Text("Welcome, \(appViewModel.firstName)")
                     .font(.largeTitle)
                     .padding()
 
-                Text("Client ID: \(clientId ?? 0)")
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
-
+          
+                Text("Client ID: \(appViewModel.clientId)")
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                
                 Spacer()
 
                 Button(action: {
-                    // Déconnexion de l'utilisateur
-                    isLoggedIn = false
-                    clientId = nil
-                    firstName = ""
+                    appViewModel.logOut()
                 }) {
                     Text("Log Out")
                         .foregroundColor(.white)
@@ -40,5 +37,3 @@ struct AccountView: View {
         }
     }
 }
-
-	

@@ -1,126 +1,84 @@
 import SwiftUI
-
 struct LoginView: View {
-    @Binding var isLoggedIn: Bool
-    @Binding var clientId: Int?
-    @Binding var firstName: String
-    
-    @State private var email: String = "email1@mail.com"
-    @State private var password: String = "mdp"
-    @State private var lastName: String = ""
-    @State private var dateOfBirth: Date = Date()
-    @State private var isRegistering: Bool = false
-    @State private var errorMessage: String? = nil
-    
-    @Environment(\.colorScheme) var colorScheme // Détecte le mode clair ou sombre
-    
+    @ObservedObject var loginViewModel: LoginViewModel
+
     var body: some View {
         ZStack {
+            // Background gradient
             LinearGradient(
-                gradient: Gradient(colors: colorScheme == .dark ? [Color.black, Color.gray] : [Color.blue.opacity(0.6), Color.purple.opacity(0.6)]),
+                gradient: Gradient(colors: loginViewModel.isRegistering ? [.purple, .blue] : [.blue, .purple]),
                 startPoint: .top,
                 endPoint: .bottom
             )
             .edgesIgnoringSafeArea(.all)
-            
+
             VStack(spacing: 20) {
-                Text(isRegistering ? "Create Account" : "Welcome Back")
+                Text(loginViewModel.isRegistering ? "Create Account" : "Welcome Back")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
                     .padding(.top, 40)
-                
-                Text(isRegistering ? "Join us and enjoy exclusive features!" : "Login to continue")
+
+                Text(loginViewModel.isRegistering ? "Join us and enjoy exclusive features!" : "Login to continue")
                     .font(.subheadline)
                     .foregroundColor(.white.opacity(0.8))
                     .padding(.bottom, 20)
-                
+
                 VStack(spacing: 16) {
-                    if isRegistering {
-                        CustomTextField(icon: "person", placeholder: "First Name", text: $firstName)
-                        CustomTextField(icon: "person.fill", placeholder: "Last Name", text: $lastName)
-                        HStack{
-                            Text("Date of Birth").foregroundStyle(Color.white)
+                    if loginViewModel.isRegistering {
+                        CustomTextField(icon: "person", placeholder: "First Name", text: $loginViewModel.firstName)
+                        CustomTextField(icon: "person.fill", placeholder: "Last Name", text: $loginViewModel.lastName)
+                        HStack {
+                            Text("Date of Birth").foregroundColor(.white)
                             Spacer()
-                            DatePicker("Date of Birth", selection: $dateOfBirth, displayedComponents: .date)
-                                .labelsHidden() // Cache le label pour un style minimal
-                                .datePickerStyle(.compact)
-                                .colorInvert() // Force l'inversion des couleurs pour un texte blanc
-                                .foregroundColor(.white) // Assure que la police est blanche
-                                .padding()
-                                .cornerRadius(8)
+                            DatePicker("Date of Birth", selection: $loginViewModel.dateOfBirth, displayedComponents: .date)
+                                .labelsHidden()
+                                .foregroundColor(.white)
                         }
                     }
-                    
-                    CustomTextField(icon: "envelope", placeholder: "Email", text: $email, isSecure: false)
-                    CustomTextField(icon: "lock", placeholder: "Password", text: $password, isSecure: true)
-                    
-                    if let errorMessage = errorMessage {
+
+                    CustomTextField(icon: "envelope", placeholder: "Email", text: $loginViewModel.email)
+                    CustomTextField(icon: "lock", placeholder: "Password", text: $loginViewModel.password, isSecure: true)
+
+                    if let errorMessage = loginViewModel.errorMessage {
                         Text(errorMessage)
                             .foregroundColor(.red)
                             .font(.caption)
                     }
                 }
                 .padding()
-                .background(colorScheme == .dark ? Color.gray.opacity(0.2) : Color.white.opacity(0.2))
+                .background(Color.white.opacity(0.2))
                 .cornerRadius(15)
-                .shadow(radius: 5)
                 .padding(.horizontal, 20)
-                
+
                 Button(action: {
-                    if isRegistering {
-                        AuthService.registerUser(
-                            firstName: firstName,
-                            lastName: lastName,
-                            email: email,
-                            password: password,
-                            dateOfBirth: dateOfBirth
-                        ) { success, error in
-                            if success {
-                                isRegistering = false
-                                errorMessage = nil
-                            } else {
-                                errorMessage = error
-                            }
-                        }
+                    if loginViewModel.isRegistering {
+                        loginViewModel.register()
                     } else {
-                        AuthService.loginUser(
-                            email: email,
-                            password: password
-                        ) { success, clientIdValue, firstNameValue, error in
-                            if success {
-                                clientId = clientIdValue
-                                firstName = firstNameValue ?? ""
-                                isLoggedIn = true
-                                errorMessage = nil
-                            } else {
-                                errorMessage = error
-                            }
-                        }
+                        loginViewModel.login()
                     }
                 }) {
-                    Text(isRegistering ? "Register" : "Login")
+                    Text(loginViewModel.isRegistering ? "Register" : "Login")
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background(colorScheme == .dark ? Color.white.opacity(0.8) : Color.white)
-                        .foregroundColor(colorScheme == .dark ? .black : .blue)
-                        .font(.headline)
+                        .background(Color.white)
+                        .foregroundColor(.blue)
                         .cornerRadius(10)
                         .shadow(radius: 3)
                 }
                 .padding(.horizontal, 20)
-                
+
                 Button(action: {
                     withAnimation {
-                        isRegistering.toggle()
+                        loginViewModel.isRegistering.toggle()
                     }
                 }) {
-                    Text(isRegistering ? "Already have an account? Log In" : "Don't have an account? Register")
+                    Text(loginViewModel.isRegistering ? "Already have an account? Log In" : "Don't have an account? Register")
                         .font(.footnote)
                         .foregroundColor(.white)
                 }
                 .padding(.top, 10)
-                
+
                 Spacer()
             }
         }

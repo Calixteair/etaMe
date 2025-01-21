@@ -8,11 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		28D4EF492D3C6F9D00660F3B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D4EF482D3C6F9D00660F3B /* LoginView.swift */; };
+		820075082D3FC6810049AE26 /* DishModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820075072D3FC6810049AE26 /* DishModel.swift */; };
+		8200750A2D3FC6CB0049AE26 /* ClientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820075092D3FC6CB0049AE26 /* ClientModel.swift */; };
+		8200750F2D3FC7D30049AE26 /* RequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8200750E2D3FC7D30049AE26 /* RequestModel.swift */; };
+		820075122D3FC8090049AE26 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820075112D3FC8090049AE26 /* AccountViewModel.swift */; };
+		820075142D3FC8150049AE26 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820075132D3FC8150049AE26 /* LoginViewModel.swift */; };
+		820075162D3FC82C0049AE26 /* DishDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820075152D3FC82C0049AE26 /* DishDetailViewModel.swift */; };
+		820075182D3FC83C0049AE26 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820075172D3FC83C0049AE26 /* HomeViewModel.swift */; };
+		8200751A2D3FC85A0049AE26 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820075192D3FC85A0049AE26 /* OrderViewModel.swift */; };
+		8200751C2D3FC8750049AE26 /* OrderDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8200751B2D3FC8750049AE26 /* OrderDetailViewModel.swift */; };
+		8200751E2D3FC8AD0049AE26 /* AccountSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8200751D2D3FC8AD0049AE26 /* AccountSettingsViewModel.swift */; };
+		820075202D3FCCC50049AE26 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8200751F2D3FCCC50049AE26 /* AppViewModel.swift */; };
+		820075222D3FD7950049AE26 /* OrderRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820075212D3FD7950049AE26 /* OrderRowView.swift */; };
+		820075242D3FDB920049AE26 /* DishRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820075232D3FDB920049AE26 /* DishRowView.swift */; };
+		820075262D3FDBF50049AE26 /* DishRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820075252D3FDBF50049AE26 /* DishRowViewModel.swift */; };
 		82578ABD2D2ED56C00242235 /* OrderDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82578ABC2D2ED56C00242235 /* OrderDetailView.swift */; };
-		82ADB2A92D2D1CA500501CB3 /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADB2A82D2D1CA500501CB3 /* AccountSettingsView.swift */; };
 		82ADB2AF2D2D1CC100501CB3 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADB2AA2D2D1CC100501CB3 /* OrderView.swift */; };
 		82ADB2B02D2D1CC100501CB3 /* DishDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADB2AB2D2D1CC100501CB3 /* DishDetailView.swift */; };
-		82ADB2B12D2D1CC100501CB3 /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADB2AC2D2D1CC100501CB3 /* model.swift */; };
 		82ADB2B22D2D1CC100501CB3 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADB2AD2D2D1CC100501CB3 /* AccountView.swift */; };
 		82ADB2B32D2D1CC100501CB3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADB2AE2D2D1CC100501CB3 /* HomeView.swift */; };
 		82ADB2B52D2D1F0300501CB3 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADB2B42D2D1F0300501CB3 /* Network.swift */; };
@@ -48,11 +60,23 @@
 
 /* Begin PBXFileReference section */
 		28D4EF482D3C6F9D00660F3B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		820075072D3FC6810049AE26 /* DishModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishModel.swift; sourceTree = "<group>"; };
+		820075092D3FC6CB0049AE26 /* ClientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientModel.swift; sourceTree = "<group>"; };
+		8200750E2D3FC7D30049AE26 /* RequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestModel.swift; sourceTree = "<group>"; };
+		820075112D3FC8090049AE26 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
+		820075132D3FC8150049AE26 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		820075152D3FC82C0049AE26 /* DishDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDetailViewModel.swift; sourceTree = "<group>"; };
+		820075172D3FC83C0049AE26 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		820075192D3FC85A0049AE26 /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
+		8200751B2D3FC8750049AE26 /* OrderDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailViewModel.swift; sourceTree = "<group>"; };
+		8200751D2D3FC8AD0049AE26 /* AccountSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewModel.swift; sourceTree = "<group>"; };
+		8200751F2D3FCCC50049AE26 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
+		820075212D3FD7950049AE26 /* OrderRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRowView.swift; sourceTree = "<group>"; };
+		820075232D3FDB920049AE26 /* DishRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishRowView.swift; sourceTree = "<group>"; };
+		820075252D3FDBF50049AE26 /* DishRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishRowViewModel.swift; sourceTree = "<group>"; };
 		82578ABC2D2ED56C00242235 /* OrderDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailView.swift; sourceTree = "<group>"; };
-		82ADB2A82D2D1CA500501CB3 /* AccountSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
 		82ADB2AA2D2D1CC100501CB3 /* OrderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
 		82ADB2AB2D2D1CC100501CB3 /* DishDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishDetailView.swift; sourceTree = "<group>"; };
-		82ADB2AC2D2D1CC100501CB3 /* model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = model.swift; sourceTree = "<group>"; };
 		82ADB2AD2D2D1CC100501CB3 /* AccountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		82ADB2AE2D2D1CC100501CB3 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		82ADB2B42D2D1F0300501CB3 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -97,6 +121,59 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		820075022D3FC5B20049AE26 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				82ADB2AD2D2D1CC100501CB3 /* AccountView.swift */,
+				28D4EF482D3C6F9D00660F3B /* LoginView.swift */,
+				820075232D3FDB920049AE26 /* DishRowView.swift */,
+				82ADB2AB2D2D1CC100501CB3 /* DishDetailView.swift */,
+				82ADB2AE2D2D1CC100501CB3 /* HomeView.swift */,
+				82ADB2AA2D2D1CC100501CB3 /* OrderView.swift */,
+				82578ABC2D2ED56C00242235 /* OrderDetailView.swift */,
+				BB69BF252D09E589001ED2D4 /* ContentView.swift */,
+				820075212D3FD7950049AE26 /* OrderRowView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		820075032D3FC5E40049AE26 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				82F1D28C2D2D57A700406DB7 /* AuthService.swift */,
+				82F1D2902D2D592A00406DB7 /* OrderService.swift */,
+				82ADB2B42D2D1F0300501CB3 /* Network.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		820075042D3FC6120049AE26 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				82F1D28E2D2D58E900406DB7 /* OrderModel.swift */,
+				820075072D3FC6810049AE26 /* DishModel.swift */,
+				820075092D3FC6CB0049AE26 /* ClientModel.swift */,
+				8200750E2D3FC7D30049AE26 /* RequestModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8200750C2D3FC79B0049AE26 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				820075112D3FC8090049AE26 /* AccountViewModel.swift */,
+				820075132D3FC8150049AE26 /* LoginViewModel.swift */,
+				820075152D3FC82C0049AE26 /* DishDetailViewModel.swift */,
+				820075172D3FC83C0049AE26 /* HomeViewModel.swift */,
+				8200751F2D3FCCC50049AE26 /* AppViewModel.swift */,
+				820075192D3FC85A0049AE26 /* OrderViewModel.swift */,
+				8200751B2D3FC8750049AE26 /* OrderDetailViewModel.swift */,
+				820075252D3FDBF50049AE26 /* DishRowViewModel.swift */,
+				8200751D2D3FC8AD0049AE26 /* AccountSettingsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		BB69BF172D09E589001ED2D4 = {
 			isa = PBXGroup;
 			children = (
@@ -120,20 +197,11 @@
 		BB69BF222D09E589001ED2D4 /* etaMe */ = {
 			isa = PBXGroup;
 			children = (
-				82ADB2AD2D2D1CC100501CB3 /* AccountView.swift */,
-				28D4EF482D3C6F9D00660F3B /* LoginView.swift */,
-				82ADB2AB2D2D1CC100501CB3 /* DishDetailView.swift */,
-				82ADB2AE2D2D1CC100501CB3 /* HomeView.swift */,
-				82F1D28C2D2D57A700406DB7 /* AuthService.swift */,
-				82ADB2AC2D2D1CC100501CB3 /* model.swift */,
-				82ADB2AA2D2D1CC100501CB3 /* OrderView.swift */,
-				82578ABC2D2ED56C00242235 /* OrderDetailView.swift */,
-				82ADB2A82D2D1CA500501CB3 /* AccountSettingsView.swift */,
-				82F1D2902D2D592A00406DB7 /* OrderService.swift */,
+				8200750C2D3FC79B0049AE26 /* ViewModel */,
+				820075042D3FC6120049AE26 /* Model */,
+				820075032D3FC5E40049AE26 /* Service */,
+				820075022D3FC5B20049AE26 /* View */,
 				BB69BF232D09E589001ED2D4 /* etaMeApp.swift */,
-				82F1D28E2D2D58E900406DB7 /* OrderModel.swift */,
-				BB69BF252D09E589001ED2D4 /* ContentView.swift */,
-				82ADB2B42D2D1F0300501CB3 /* Network.swift */,
 				82ADB2B62D2D1FAA00501CB3 /* Property List.plist */,
 				BB69BF272D09E58A001ED2D4 /* Assets.xcassets */,
 				BB69BF292D09E58A001ED2D4 /* Preview Content */,
@@ -298,18 +366,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB69BF262D09E589001ED2D4 /* ContentView.swift in Sources */,
-				82ADB2B12D2D1CC100501CB3 /* model.swift in Sources */,
 				82F1D2912D2D592A00406DB7 /* OrderService.swift in Sources */,
+				820075202D3FCCC50049AE26 /* AppViewModel.swift in Sources */,
 				82ADB2AF2D2D1CC100501CB3 /* OrderView.swift in Sources */,
+				820075182D3FC83C0049AE26 /* HomeViewModel.swift in Sources */,
+				820075242D3FDB920049AE26 /* DishRowView.swift in Sources */,
 				82ADB2B02D2D1CC100501CB3 /* DishDetailView.swift in Sources */,
+				820075262D3FDBF50049AE26 /* DishRowViewModel.swift in Sources */,
 				82ADB2B22D2D1CC100501CB3 /* AccountView.swift in Sources */,
+				8200750F2D3FC7D30049AE26 /* RequestModel.swift in Sources */,
 				82ADB2B52D2D1F0300501CB3 /* Network.swift in Sources */,
+				820075082D3FC6810049AE26 /* DishModel.swift in Sources */,
+				820075142D3FC8150049AE26 /* LoginViewModel.swift in Sources */,
 				82578ABD2D2ED56C00242235 /* OrderDetailView.swift in Sources */,
 				28D4EF492D3C6F9D00660F3B /* LoginView.swift in Sources */,
+				820075222D3FD7950049AE26 /* OrderRowView.swift in Sources */,
+				8200751A2D3FC85A0049AE26 /* OrderViewModel.swift in Sources */,
 				82ADB2B32D2D1CC100501CB3 /* HomeView.swift in Sources */,
 				82F1D28D2D2D57A700406DB7 /* AuthService.swift in Sources */,
-				82ADB2A92D2D1CA500501CB3 /* AccountSettingsView.swift in Sources */,
+				8200750A2D3FC6CB0049AE26 /* ClientModel.swift in Sources */,
 				82F1D28F2D2D58E900406DB7 /* OrderModel.swift in Sources */,
+				820075122D3FC8090049AE26 /* AccountViewModel.swift in Sources */,
+				820075162D3FC82C0049AE26 /* DishDetailViewModel.swift in Sources */,
+				8200751E2D3FC8AD0049AE26 /* AccountSettingsViewModel.swift in Sources */,
+				8200751C2D3FC8750049AE26 /* OrderDetailViewModel.swift in Sources */,
 				BB69BF242D09E589001ED2D4 /* etaMeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

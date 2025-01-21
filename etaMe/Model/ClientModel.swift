@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+
+struct Client: Codable {
+    var firstName: String = ""
+    var lastName: String = ""
+    var email: String = ""
+    var dateOfBirth: Date = Date()
+}
