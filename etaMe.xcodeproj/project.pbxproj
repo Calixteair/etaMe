@@ -25,6 +25,7 @@
 		820075242D3FDB920049AE26 /* DishRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820075232D3FDB920049AE26 /* DishRowView.swift */; };
 		820075262D3FDBF50049AE26 /* DishRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820075252D3FDBF50049AE26 /* DishRowViewModel.swift */; };
 		82578ABD2D2ED56C00242235 /* OrderDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82578ABC2D2ED56C00242235 /* OrderDetailView.swift */; };
+		8277FB922D4143E10048F94C /* EditPorfilViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8277FB912D4143E10048F94C /* EditPorfilViewModel.swift */; };
 		82ADB2AF2D2D1CC100501CB3 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADB2AA2D2D1CC100501CB3 /* OrderView.swift */; };
 		82ADB2B02D2D1CC100501CB3 /* DishDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADB2AB2D2D1CC100501CB3 /* DishDetailView.swift */; };
 		82ADB2B22D2D1CC100501CB3 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADB2AD2D2D1CC100501CB3 /* AccountView.swift */; };
@@ -79,6 +80,7 @@
 		820075232D3FDB920049AE26 /* DishRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishRowView.swift; sourceTree = "<group>"; };
 		820075252D3FDBF50049AE26 /* DishRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishRowViewModel.swift; sourceTree = "<group>"; };
 		82578ABC2D2ED56C00242235 /* OrderDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailView.swift; sourceTree = "<group>"; };
+		8277FB912D4143E10048F94C /* EditPorfilViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPorfilViewModel.swift; sourceTree = "<group>"; };
 		82ADB2AA2D2D1CC100501CB3 /* OrderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
 		82ADB2AB2D2D1CC100501CB3 /* DishDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishDetailView.swift; sourceTree = "<group>"; };
 		82ADB2AD2D2D1CC100501CB3 /* AccountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				8200751B2D3FC8750049AE26 /* OrderDetailViewModel.swift */,
 				820075252D3FDBF50049AE26 /* DishRowViewModel.swift */,
 				8200751D2D3FC8AD0049AE26 /* AccountSettingsViewModel.swift */,
+				8277FB912D4143E10048F94C /* EditPorfilViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				8200750A2D3FC6CB0049AE26 /* ClientModel.swift in Sources */,
 				82F1D28F2D2D58E900406DB7 /* OrderModel.swift in Sources */,
 				820075122D3FC8090049AE26 /* AccountViewModel.swift in Sources */,
+				8277FB922D4143E10048F94C /* EditPorfilViewModel.swift in Sources */,
 				820075162D3FC82C0049AE26 /* DishDetailViewModel.swift in Sources */,
 				8200751E2D3FC8AD0049AE26 /* AccountSettingsViewModel.swift in Sources */,
 				8200751C2D3FC8750049AE26 /* OrderDetailViewModel.swift in Sources */,

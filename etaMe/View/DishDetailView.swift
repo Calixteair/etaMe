@@ -2,6 +2,7 @@ import SwiftUI
 
 struct DishDetailView: View {
     @StateObject private var viewModel: DishDetailViewModel
+    @Environment(\.dismiss) private var dismiss
 
     init(dish: Dish, idClient: Int) {
         _viewModel = StateObject(wrappedValue: DishDetailViewModel(clientId: idClient, dish: dish))
@@ -9,13 +10,13 @@ struct DishDetailView: View {
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 20) {
+            VStack(spacing: 5) {
                 // Image du plat
                 AsyncImage(url: URL(string: viewModel.dish.URLimage)) { image in
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(height: 300)
+                        .frame(height: 280)
                         .clipShape(RoundedRectangle(cornerRadius: 20))
                         .shadow(radius: 10)
                 } placeholder: {
@@ -44,13 +45,11 @@ struct DishDetailView: View {
                     NutritionInfo(title: "Proteins", value: "\(viewModel.dish.proteins)g")
                     NutritionInfo(title: "Carbs", value: "\(viewModel.dish.carbs)g")
                 }
-                .padding(.horizontal)
 
                 Text("$\(viewModel.dish.price, specifier: "%.2f")")
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.blue)
-                    .padding(.top)
 
                 HStack {
                     Text("Quantity:")
@@ -61,14 +60,18 @@ struct DishDetailView: View {
                 .padding()
                 .background(Color(UIColor.systemGray6))
                 .cornerRadius(10)
+                
+                Spacer()
 
-                Button(action: viewModel.addToOrder) {
+                Button(action: {
+                    viewModel.addToOrder()
+                }) {
                     if viewModel.isAdding {
                         ProgressView()
                     } else {
                         Text("Add to Order")
                             .font(.headline)
-                            .frame(maxWidth: .infinity)
+                            .frame(maxWidth: 400)
                             .padding()
                             .background(LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .leading, endPoint: .trailing))
                             .foregroundColor(.white)
@@ -80,6 +83,7 @@ struct DishDetailView: View {
                 .padding(.horizontal)
 
                 if let feedbackMessage = viewModel.feedbackMessage {
+                    
                     Text(feedbackMessage)
                         .font(.callout)
                         .foregroundColor(feedbackMessage.contains("successfully") ? .green : .red)
@@ -90,6 +94,11 @@ struct DishDetailView: View {
         }
         .navigationTitle(viewModel.dish.name)
         .navigationBarTitleDisplayMode(.inline)
+        .onChange(of: viewModel.isAdded) { isAdded in
+                    if isAdded {
+                        dismiss() // Ferme la vue lorsque `isAdded` passe à `true`
+                    }
+                }
     }
 
     private func NutritionInfo(title: String, value: String) -> some View {
