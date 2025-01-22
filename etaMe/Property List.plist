@@ -7,7 +7,7 @@
 	<key>mode</key>
 	<integer>0</integer>
 	<key>link</key>
-	<string>https://eatme.codeky.fr</string>
+	<string>https://eatmeapi.calixteair.fr</string>
 	<key>Port</key>
 	<string>3000</string>
 </dict>
